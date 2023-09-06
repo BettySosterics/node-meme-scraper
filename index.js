@@ -1,6 +1,6 @@
-import fs from 'node:fs';
+/* import fs from 'node:fs';
 
-/* const path = './memes';
+ const path = './memes';
 
 fs.access(path, (error) => {
   // To check if the given directory
