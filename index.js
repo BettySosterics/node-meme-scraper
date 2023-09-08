@@ -1,6 +1,6 @@
-import fs from 'node:fs';
+/* import fs from 'node:fs';
 
-const path = './memes';
+/* const path = './memes';
 
 fs.access(path, (error) => {
   // To check if the given directory
@@ -18,4 +18,12 @@ fs.access(path, (error) => {
   } else {
     console.log('Given Directory already exists !!');
   }
-});
+}); */
+
+// fetch request
+fetch('https://memegen-link-examples-upleveled.netlify.app/')
+  // response to text request
+  .then((response) => response.text())
+  // print data
+  .then((data) => console.log('data from fetch with promises', data))
+  .catch((error) => console.log(error));
