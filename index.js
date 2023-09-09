@@ -19,51 +19,23 @@ fs.access(newFolder, (error) => {
   } else {
     console.log('Given Directory already exists !!');
   }
-});
-/*
-const response = await fetch(
-  'https://memegen-link-examples-upleveled.netlify.app/',
-);
-const data = await response.text();
-const blob = await response.blob().then(blob);
-const objectURL = await URL.createObjectURL(blob);
-console.log(data);
-const myImage = document.querySelector('img');
-const myRequest = new Request('flowers.jpg'); */
-
-/*
-fetch('https://memegen-link-examples-upleveled.netlify.app/').then(
-  (response) => {
-    response.blob().then((myBlob) => {
-      const objectURL = URL.createObjectURL(myBlob);
-      console.log(objectURL);
-    });
-  },
-);
-*/
+});*/
 
 import { promises as fs } from 'node:fs';
+import { argv } from 'node:process';
+import url from 'node:url';
 
-/*
-const downloadImage = async (url, path) => {
-  const response = await fetch('https://sabe.io/images/saturn.png');
-  const blob = await response.blob();
-  const arrayBuffer = await blob.arrayBuffer();
-  const buffer = Buffer.from(arrayBuffer);
-  await fs.writeFile('memes', buffer);
-};
+// const imgUrl =
 
-await downloadImage('https://sabe.io/images/saturn.png', './saturn.png'); */
+const myUrl = `https://memegen-link-examples-upleveled.netlify.app/`;
+console.log(myUrl);
+const response = await fetch(myUrl);
+console.log(response);
 
-const url =
-  'https://api.memegen.link/images/bad/your_meme_is_bad/and_you_should_feel_bad.jpg';
+// const blob = await response.blob();
 
-const response = await fetch(url);
+// const arrayBuffer = await blob.arrayBuffer();
 
-const blob = await response.blob();
+// const buffer = Buffer.from(arrayBuffer);
 
-const arrayBuffer = await blob.arrayBuffer();
-
-const buffer = Buffer.from(arrayBuffer);
-
-await fs.writeFile('./memes/and_you_should_feel_bad.jpg', buffer);
+// await fs.writeFile('./memes/and_you_should_feel_bad.jpg', buffer);
