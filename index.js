@@ -33,4 +33,9 @@ const body = await response.text();
 // console.log(body);
 
 const images = parse(body).querySelector('#images').querySelectorAll('img');
-console.log(images);
+// console.log(images);
+
+// limit the number of images
+
+images.splice(10);
+// console.log(images.length);
