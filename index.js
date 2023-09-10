@@ -1,6 +1,8 @@
-// import fs from 'node:fs';
-// import path from 'node:path';
-// import axios from 'axios';
+import { promises as fs } from 'node:fs';
+import { argv } from 'node:process';
+// import url from 'node:url';
+import fetch from 'node-fetch';
+import { parse } from 'node-html-parser';
 
 // create MEMES folder
 
@@ -21,21 +23,14 @@ fs.access(newFolder, (error) => {
   }
 });*/
 
-import { promises as fs } from 'node:fs';
-import { argv } from 'node:process';
-import url from 'node:url';
+// Access the website
 
-// const imgUrl =
+const response = await fetch(
+  'https://memegen-link-examples-upleveled.netlify.app/',
+);
+// console.log(response);
+const body = await response.text();
+// console.log(body);
 
-const myUrl = `https://memegen-link-examples-upleveled.netlify.app/`;
-console.log(myUrl);
-const response = await fetch(myUrl);
-console.log(response);
-
-// const blob = await response.blob();
-
-// const arrayBuffer = await blob.arrayBuffer();
-
-// const buffer = Buffer.from(arrayBuffer);
-
-// await fs.writeFile('./memes/and_you_should_feel_bad.jpg', buffer);
+const images = parse(body).querySelector('#images').querySelectorAll('img');
+console.log(images);
