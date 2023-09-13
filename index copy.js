@@ -21,7 +21,7 @@ fs.access(path, (error) => {
 });
 
 const imgList = document.querySelectorAll('img'); */
-
+/*
 // fetch request
 function returnImgUrls() {
   fetch('https://memegen-link-examples-upleveled.netlify.app/')
@@ -31,3 +31,4 @@ function returnImgUrls() {
     .then((data) => console.log('data from fetch with promises', data))
     .catch((error) => console.log(error));
 }
+*/

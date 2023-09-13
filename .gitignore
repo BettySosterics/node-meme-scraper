@@ -6,3 +6,6 @@ npm-debug.log*
 *.tsbuildinfo
 
 memes/
+
+.eslintcache
+*.tsbuildinfo
