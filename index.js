@@ -36,10 +36,10 @@ async function fetchMemes() {
     memeUrls.push($(element).attr('src'));
   });
 
-  const first10Memes = memeUrls.slice(0, 10);
+  const fetchedMemes = memeUrls.slice(0, 10);
 
-  for (let i = 0; i < first10Memes.length; i++) {
-    const imageUrl = first10Memes[i];
+  for (let i = 0; i < fetchedMemes.length; i++) {
+    const imageUrl = fetchedMemes[i];
     const imageName = `${(i + 1).toString().padStart(2, '0')}.jpg`;
     const imagePath = path.join(folderPath, imageName);
 
@@ -75,33 +75,3 @@ async function fileExists(file) {
     console.error('Unhandled error:', error.message);
     process.exit(1);
   });
-
-// limit the number of images
-
-/* images.splice(10);
-
-let fileName = '';
-
-const fileNameArray = [];
-
-for (let i = 1; i <= 10; i++) {
-  if (i < 10) {
-    fileName = `0${i}.jpg`;
-    fileNameArray.push(fileName);
-  } else {
-    fileName = `${i}.jpg`;
-    fileNameArray.push(fileName);
-  }
-}
-
-for (let i = 0; i <= 10; i++) {
-  fetch(images[i])
-    .then((response) => {
-      const saveFile = fs.createWriteStream(`./memes/${fileNameArray[i]}`);
-      response.body.pipe(saveFile);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-}
-*/
