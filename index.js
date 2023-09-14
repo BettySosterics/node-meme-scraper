@@ -8,8 +8,8 @@ import fetch from 'node-fetch';
 
 const folderPath = './memes';
 
-fs.access(folderPath, (error) => {
-  if (error) {
+fs.access(folderPath, (err) => {
+  if (err) {
     fs.mkdir(folderPath, (error) => {
       if (error) {
         console.log(error);
