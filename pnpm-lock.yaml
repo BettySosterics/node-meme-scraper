@@ -11,6 +11,9 @@ dependencies:
   download:
     specifier: ^8.0.0
     version: 8.0.0
+  https:
+    specifier: ^1.0.0
+    version: 1.0.0
   node-fetch:
     specifier: ^3.3.2
     version: 3.3.2
@@ -2219,6 +2222,10 @@ packages:
 
   /http-cache-semantics@3.8.1:
     resolution: {integrity: sha512-5ai2iksyV8ZXmnZhHH4rWPoxxistEexSi5936zIQ1bnNTW5VnA85B6P/VpXiRM017IgRvb2kKo1a//y+0wSp3w==}
+    dev: false
+
+  /https@1.0.0:
+    resolution: {integrity: sha512-4EC57ddXrkaF0x83Oj8sM6SLQHAWXw90Skqu2M4AEWENZ3F02dFJE/GARA8igO79tcgYqGrD7ae4f5L3um2lgg==}
     dev: false
 
   /ieee754@1.2.1:
