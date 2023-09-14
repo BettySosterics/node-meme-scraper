@@ -1,8 +1,6 @@
 import * as fs from 'node:fs';
-import https from 'node:https';
 import path from 'node:path';
 import cheerio from 'cheerio';
-// import download from 'download';
 import fetch from 'node-fetch';
 
 // create MEMES folder
@@ -24,23 +22,53 @@ fs.access(folderPath, (err) => {
 });
 
 // Access the website
-
-const fetchWebsite = await fetch(
+const website = await fetch(
   'https://memegen-link-examples-upleveled.netlify.app/',
 );
-const body = await fetchWebsite.text();
+
+const body = await website.text();
 
 const $ = cheerio.load(body);
-const memeUrls = [];
-$('img').each((index, element) => {
-  memeUrls.push($(element).attr('src'));
-});
 
-const fetchedMemes = memeUrls.slice(0, 10);
-
-for (let i = 0; i < fetchedMemes.length; i++) {
-  const imageName = `${(i + 1).toString().padStart(2, '0')}.jpg`;
-  const imagePath = path.join(folderPath, imageName);
-  const imageFile = fs.createWriteStream(imagePath);
-  https.get(fetchedMemes[i].src, (response) => response.pipe(imageFile));
+const arrayImages = [];
+for (let i = 0; i <= 9; i++) {
+  arrayImages.push($('a').find('img')[i].attribs.src);
 }
+
+arrayImages.forEach((image, index) => {
+  const imageURL = image;
+
+  // The path of the directory to save the image
+  const dirPath = './memes';
+
+  // The name of the image file
+  let fileName = `0${index + 1}.jpg`;
+
+  if (index === 9) {
+    fileName = `${index + 1}.jpg`;
+  }
+  // Create the directory if it does not exist
+  if (!fs.existsSync(dirPath)) {
+    fs.mkdirSync(dirPath);
+  }
+
+  // Use fetch to get the image data as a buffer
+  fetch(imageURL)
+    .then((resp) => resp.arrayBuffer())
+    .then((buffer) => {
+      // convert arraybuffer into buffer
+      const arrBuffer = buffer;
+      const nodeBuffer = Buffer.from(arrBuffer);
+
+      fs.writeFile(path.join(dirPath, fileName), nodeBuffer, (err) => {
+        if (err) {
+          console.error(err);
+        } else {
+          console.log('Image downloaded successfully');
+        }
+      });
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+});
